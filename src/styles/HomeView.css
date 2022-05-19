@@ -1,82 +1,251 @@
+.main {
+  font-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: -0.5em;
+}
+
 .topbar {
-    height: 25vh;
-    background-image: url("../assets/green-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    padding-bottom: 12vh;
+  background-image: url("../assets/green-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .searchContainer {
-    width: 40vw;
-    height: 13vh;
-    /* background-color: aqua; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    flex-wrap: wrap;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .headerContainer {
-    width: 100%;
-    height: 2vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: purple; */
-}
-
-.header {
-    font-size: 2vw;
+  width: 100%;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke;
+  /* background-color: purple; */
 }
 
 .userIP {
-    width: 100%;
-    /* background-color: darkgreen; */
-    margin-top: 0.3rem;
-    font-size: 1vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  /* background-color: darkgreen; */
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputContainer {
-    width: 20vw;
-    height: 5vh;
-    margin-top: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input {
-    width: 80%;
-    height: 100%;
-    border-top-left-radius: 0.5em;
-    border-bottom-left-radius: 0.5em;
-    outline: none;
+  width: 80%;
+  height: 100%;
+  border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em;
+  outline: none;
 }
 
 .iconContainer {
-    width: 10%;
-    height: 110%;
-    cursor: pointer;
-    background-color: black;
-    color: white;
-    border-top-right-radius: 0.5em;
-    border-bottom-right-radius: 0.5em;
+  width: 10%;
+  height: 111%;
+  cursor: pointer;
+  background-color: black;
+  color: whitesmoke;
+  border-top-right-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
 }
 
 i {
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    top: 0.8em;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .topbar {
+    height: 27vh;
+    padding-bottom: 4em;
+  }
+  .header {
+    font-size: 2em;
+    margin-top: 1em;
+  }
+  .searchContainer {
+    width: 19em;
+    height: 8em;
+  }
+  .inputContainer {
+    width: 19em;
+    height: 2.5em;
+    margin-top: 0.2em;
+  }
+  .userIP {
+    margin-top: 1rem;
+  }
+  #map {
+    height: 73vh;
+  }
+  i {
+    top: 0.7em;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .topbar {
+    height: 28vh;
+    padding-bottom: 4em;
+  }
+  .header {
+    font-size: 2.3em;
+  }
+  .searchContainer {
+    width: 27em;
+    height: 8em;
+  }
+  .inputContainer {
+    width: 27em;
+    height: 2.5em;
+    margin-top: 0.5em;
+  }
+  .userIP {
+    margin-top: 1em;
+    font-size: 1em;
+  }
+  #map {
+    height: 72vh;
+  }
+  i {
+    top: 0.7em;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .topbar {
+    height: 28vh;
+    padding-bottom: 3em;
+  }
+  .header {
+    font-size: 2.3em;
+  }
+  .searchContainer {
+    width: 30em;
+    height: 10em;
+  }
+  .inputContainer {
+    width: 30em;
+    height: 2.5em;
+    margin-top: 0.5em;
+  }
+  .userIP {
+    margin-top: 1em;
+    font-size: 1em;
+  }
+  #map {
+    height: 72vh;
+  }
+  i {
+    top: 0.7em;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1919px) {
+  .topbar {
+    height: 28vh;
+    padding-bottom: 3em;
+  }
+  .header {
+    font-size: 2.3em;
+  }
+  .searchContainer {
+    width: 35em;
+    height: 10em;
+  }
+  .inputContainer {
+    width: 35em;
+    height: 2.5em;
+  }
+  .userIP {
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    font-size: 1em;
+  }
+  #map {
+    height: 72vh;
+  }
+  i {
+    top: 0.7em;
+  }
+}
+
+@media screen and (min-width: 1920px) and (max-width: 2559px) {
+  .topbar {
+    height: 28vh;
+    padding-bottom: 5em;
+  }
+  .header {
+    font-size: 2.6em;
+  }
+  .searchContainer {
+    width: 35em;
+    height: 10em;
+  }
+  .inputContainer {
+    width: 35em;
+    height: 3em;
+  }
+  .userIP {
+    margin-top: 1.5em;
+    margin-bottom: 0.3em;
+    font-size: 1.2em;
+  }
+  #map {
+    height: 72vh;
+  }
+  i {
+    top: 0.7em;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .topbar {
+    height: 28vh;
+    padding-bottom: 10em;
+  }
+  .header {
+    font-size: 3.5em;
+  }
+  .searchContainer {
+    width: 45em;
+    height: 10em;
+  }
+  .inputContainer {
+    width: 45em;
+    height: 3.5em;
+    margin-top: 0.5em;
+  }
+  .userIP {
+    margin-top: 2em;
+    font-size: 1.7em;
+  }
+  #map {
+    height: 72vh;
+  }
+  i {
+    top: 1.1em;
+  }
 }
