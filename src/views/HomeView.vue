@@ -30,29 +30,42 @@
 <script>
 import IPinfo from "../components/IPinfo";
 import leaflet from "leaflet";
+import axios from "axios";
 import { onMounted } from "vue";
+
 export default {
   name: "HomeView",
   components: { IPinfo },
   setup() {
-    let map;
+    let map, APIKEY;
     onMounted(() => {
       map = leaflet.map("map").setView([51.505, -0.09], 13);
 
-      leaflet
-        .tileLayer(
-          "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYnJlbmRhbm1lcnJpdHQxIiwiYSI6ImNsM2RqZ2Y2eTAzODEzanJuYXBlNGFheDkifQ.ZF7GKJQ6SRK5sK2Y-GYk2Q",
-          {
-            attribution:
-              'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: "mapbox/streets-v11",
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: "pk.eyJ1IjoiYnJlbmRhbm1lcnJpdHQxIiwiYSI6ImNsM2RqZ2Y2eTAzODEzanJuYXBlNGFheDkifQ.ZF7GKJQ6SRK5sK2Y-GYk2Q",
-          }
-        )
-        .addTo(map);
+      async function apiRequest() {
+        let res = await axios.get("/apikey");
+        APIKEY = res.data.key;
+      }
+
+      async function mapInit() {
+        await apiRequest();
+
+        leaflet
+          .tileLayer(
+            `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${APIKEY}`,
+            {
+              attribution:
+                'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+              maxZoom: 18,
+              id: "mapbox/streets-v11",
+              tileSize: 512,
+              zoomOffset: -1,
+              accessToken: `${APIKEY}`,
+            }
+          )
+          .addTo(map);
+      }
+
+      mapInit();
     });
   },
 };
