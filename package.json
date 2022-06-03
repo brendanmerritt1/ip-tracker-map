@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "concurrently \"npm run client\" \"npm run server\"",
-    "server": "cd /server && nodemon index.js",
+    "server": "cd server && nodemon index.js",
     "client": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
