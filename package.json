@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "concurrently \"npm run client\" \"npm run server\"",
     "client": "vue-cli-service serve",
-    "start": "cd /server && node index.js",
+    "start": "node index.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
