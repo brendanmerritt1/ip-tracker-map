@@ -5,18 +5,22 @@
         <div class="headerContainer">
           <h1 class="header">IP Address Tracker</h1>
         </div>
-        <div class="userIP">Your IP Address: 192.168.1.1</div>
+        <div class="userIP">Your IP Address: {{userIP}}</div>
         <div class="inputContainer">
           <input
             class="input"
             type="text"
             placeholder="Search any IP address"
+            v-model="queryIP"
           />
           <div class="iconContainer">
-            <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+            <i
+              @click="getIPinfo"
+              class="fa-solid fa-right-to-bracket fa-lg"
+            ></i>
           </div>
         </div>
-        <IPinfo />
+        <IPinfo v-if="IPinfo" v-bind:IPinfo="IPinfo" />
       </div>
     </div>
     <div id="map"></div>
@@ -31,24 +35,45 @@
 import IPinfo from "../components/IPinfo";
 import leaflet from "leaflet";
 import axios from "axios";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "HomeView",
   components: { IPinfo },
   setup() {
-    let map, APIKEY;
+    let map, APIKEY, GeoAPIKEY;
+    const userIP = ref(null);
+    const queryIP = ref("");
+    const IPinfo = ref(null);
     onMounted(() => {
-      map = leaflet.map("map").setView([51.505, -0.09], 13);
+      map = leaflet.map("map").setView([34.139, 19.2349], 2.5);
+      const userIPinfo = async () => {
+        try {
+          const response = await axios.get("/GeoAPIKey");
+          GeoAPIKEY = response.data.key;
+          const data = await axios.get(
+            `https://geo.ipify.org/api/v2/country,city?apiKey=${GeoAPIKEY}`
+          );
+          const result = data.data;
+          IPinfo.value = {
+            address: result.ip,
+            loc: result.location.region,
+            timezone: result.location.timezone,
+            isp: result.isp,
+            lat: result.location.lat,
+            lng: result.location.lng,
+          };
+          leaflet.marker([IPinfo.value.lat, IPinfo.value.lng]).addTo(map);
+          map.setView([IPinfo.value.lat, IPinfo.value.lng], 11);
+          userIP.value = IPinfo.value.address;
+        } catch (e) {
+          alert(e.message);
+        }
+      };
 
-      async function apiRequest() {
-        let res = await axios.get("/apikey");
+      const mapInit = async () => {
+        let res = await axios.get("/MapboxAPIkey");
         APIKEY = res.data.key;
-      }
-
-      async function mapInit() {
-        await apiRequest();
-
         leaflet
           .tileLayer(
             `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${APIKEY}`,
@@ -63,10 +88,36 @@ export default {
             }
           )
           .addTo(map);
-      }
+      };
 
+      userIPinfo();
       mapInit();
     });
+
+    const getIPinfo = async () => {
+      try {
+        const response = await axios.get("/GeoAPIkey");
+        GeoAPIKEY = response.data.key;
+        const data = await axios.get(
+          `https://geo.ipify.org/api/v2/country,city?apiKey=${GeoAPIKEY}&ipAddress=${queryIP.value}`
+        );
+        const result = data.data;
+        IPinfo.value = {
+          address: result.ip,
+          loc: result.location.region,
+          timezone: result.location.timezone,
+          isp: result.isp,
+          lat: result.location.lat,
+          lng: result.location.lng,
+        };
+        leaflet.marker([IPinfo.value.lat, IPinfo.value.lng]).addTo(map);
+        map.setView([IPinfo.value.lat, IPinfo.value.lng], 13);
+      } catch (e) {
+        alert(e.message);
+      }
+    };
+
+    return { queryIP, IPinfo, getIPinfo, userIP };
   },
 };
 </script>

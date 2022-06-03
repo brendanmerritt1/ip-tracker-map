@@ -1,5 +1,6 @@
 .main {
   font-size: 100%;
+  font-family: 'Comfortaa';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,7 +19,6 @@
 }
 
 .searchContainer {
-  /* background-color: aqua; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,12 +33,10 @@
   justify-content: center;
   align-items: center;
   color: whitesmoke;
-  /* background-color: purple; */
 }
 
 .userIP {
   width: 100%;
-  /* background-color: darkgreen; */
   color: whitesmoke;
   display: flex;
   justify-content: center;
@@ -217,7 +215,7 @@ i {
     height: 72vh;
   }
   i {
-    top: 0.7em;
+    top: 0.85em;
   }
 }
 
