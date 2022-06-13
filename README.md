@@ -5,7 +5,7 @@ A map that displays any searched IP address - made using Vue, Node, Express, IPI
 This project has been deployed [to Heroku here](https://an-ip-tracker-app.herokuapp.com/).
 
 ## Mobile / Desktop Layouts
-The website is designed to transition seamlessly into all mobile, tablet, laptop, and desktop screens. Below are images and gifs to display how the website performs on some of the most common screen resolutions to date.
+The website is designed to transition seamlessly into all mobile, tablet, laptop, and desktop screens. Below are images to display how the website performs on some of the most common screen resolutions to date.
 
 ### Desktop - 2560 x 1440
 ![2560x1440](https://user-images.githubusercontent.com/69825805/173463593-16261f93-5875-4470-8954-9ef3a7c4c20f.png)
