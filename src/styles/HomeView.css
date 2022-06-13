@@ -11,8 +11,14 @@
   inset: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   background-color: #7692a3;
+}
+
+.infoBox {
+  display: flex;
+  justify-content: center;
 }
 
 .searchContainer {
@@ -108,8 +114,7 @@ i {
     padding: 1em 0em;
   }
   .infoBox {
-    margin-right: 6vw;
-    margin-top: 4vh;
+    padding: 2.5em 0em;
   }
 }
 
@@ -140,12 +145,15 @@ i {
   i {
     top: 0.7em;
   }
+  .infoBox {
+    padding: 1.5em 0em;
+  }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .topbar {
-    height: 28vh;
-    padding-bottom: 3em;
+    height: 26vh;
+    padding-bottom: 2.4em;
   }
   .header {
     font-size: 2.3em;
@@ -164,10 +172,13 @@ i {
     font-size: 1em;
   }
   #map {
-    height: 72vh;
+    height: 74vh;
   }
   i {
     top: 0.7em;
+  }
+  .infoBox {
+    margin-top: 2vh;
   }
 }
 
@@ -202,7 +213,7 @@ i {
 
 @media screen and (min-width: 1920px) and (max-width: 2559px) {
   .topbar {
-    height: 28vh;
+    height: 32vh;
     padding-bottom: 5em;
   }
   .header {

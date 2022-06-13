@@ -17,6 +17,7 @@
             type="text"
             placeholder="Search any IP address"
             v-model="queryIP"
+            v-on:keyup.enter="getIPinfo"
           />
           <div class="iconContainer">
             <i
