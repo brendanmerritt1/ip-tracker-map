@@ -2,7 +2,7 @@
 A map that displays any searched IP address - made using Vue, Node, Express, IPIFY's geolocation API, and Mapbox's API (with Leaflet.js).
 
 ## View This Project
-This project has been deployed [to Heroku here](https://an-ip-tracker-app.herokuapp.com/). Since the website was deployed to Heroku pretty early, most Git commits were submitted to the Heroku remote branch, explaining the lack of commits on the main branch.
+This project has been deployed [to Heroku here](https://an-ip-tracker-app.herokuapp.com/).
 
 ## Mobile / Desktop Layouts
 The website is designed to transition seamlessly into all mobile, tablet, laptop, and desktop screens. Below are images and gifs to display how the website performs on some of the most common screen resolutions to date.
