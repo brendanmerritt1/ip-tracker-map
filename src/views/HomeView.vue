@@ -1,11 +1,16 @@
 <template>
   <div class="main">
     <div class="topbar">
+      <MqResponsive target="tablet+">
+        <div class="infoBox">
+          <InfoBox :title="$data.title[0]" :caption="$data.caption[0]" />
+        </div>
+      </MqResponsive>
       <div class="searchContainer">
         <div class="headerContainer">
           <h1 class="header">IP Address Tracker</h1>
         </div>
-        <div class="userIP">Your IP Address: {{userIP}}</div>
+        <div class="userIP">Your IP Address: {{ userIP }}</div>
         <div class="inputContainer">
           <input
             class="input"
@@ -20,10 +25,25 @@
             ></i>
           </div>
         </div>
-        <IPinfo v-if="IPinfo" v-bind:IPinfo="IPinfo" />
+        <IPinfo v-if="IPinfo" :IPinfo="IPinfo" />
       </div>
+      <MqResponsive target="tablet+">
+        <div class="infoBox">
+          <InfoBox :title="$data.title[1]" :caption="$data.caption[1]" />
+        </div>
+      </MqResponsive>
     </div>
     <div id="map"></div>
+    <MqResponsive target="phone">
+      <div class="bottomContainer">
+        <div class="infoBox">
+          <InfoBox :title="$data.title[0]" :caption="$data.caption[0]" />
+        </div>
+        <div class="infoBox">
+          <InfoBox :title="$data.title[1]" :caption="$data.caption[1]" />
+        </div>
+      </div>
+    </MqResponsive>
   </div>
 </template>
 
@@ -33,13 +53,24 @@
 
 <script>
 import IPinfo from "../components/IPinfo";
+import InfoBox from "../components/InfoBox";
 import leaflet from "leaflet";
 import axios from "axios";
+import { MqResponsive } from "vue3-mq";
 import { onMounted, ref } from "vue";
 
 export default {
   name: "HomeView",
-  components: { IPinfo },
+  components: { IPinfo, InfoBox, MqResponsive },
+  data() {
+    return {
+      title: ["What is an IP address?", "How does this tool work?"],
+      caption: [
+        "An IP address is a series of numbers that identifies any device on a network. They are used as identification while communicating over the internet, as well as on other networks. IP addresses contain location information and act as unique identifiers - meaning no two of the same public IP address exists.",
+        "This tool uses a geolocation API that fetches the location of the inputted IP address, and MapBox's API to display the resulting data. Public IP addresses do not contain information on one's exact location, and as such, this tool can only give a general area of the queried address.",
+      ],
+    };
+  },
   setup() {
     let map, APIKEY, GeoAPIKEY;
     const userIP = ref(null);
