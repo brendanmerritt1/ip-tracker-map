@@ -1,7 +1,6 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "concurrently \"npm run client\" \"npm run server\"",
     "server": "cd server && nodemon index.js",
@@ -38,5 +37,5 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3"
   },
-  "homepage": "https://an-ip-tracker-app.herokuapp.com/"
+  "homepage": "."
 }
