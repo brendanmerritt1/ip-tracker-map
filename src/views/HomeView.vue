@@ -77,11 +77,12 @@ export default {
     const userIP = ref(null);
     const queryIP = ref("");
     const IPinfo = ref(null);
+    const axiosInstance = axios.create({ baseURL: process.env.API_URL });
     onMounted(() => {
       map = leaflet.map("map").setView([34.139, 19.2349], 2.5);
       const userIPinfo = async () => {
         try {
-          const response = await axios.get("/GeoAPIKey");
+          const response = await axiosInstance.get("/GeoAPIKey");
           GeoAPIKEY = response.data.key;
           const data = await axios.get(
             `https://geo.ipify.org/api/v2/country,city?apiKey=${GeoAPIKEY}`
@@ -104,7 +105,7 @@ export default {
       };
 
       const mapInit = async () => {
-        let res = await axios.get("/MapboxAPIkey");
+        let res = await axiosInstance.get("/MapboxAPIkey");
         APIKEY = res.data.key;
         leaflet
           .tileLayer(
@@ -128,7 +129,7 @@ export default {
 
     const getIPinfo = async () => {
       try {
-        const response = await axios.get("/GeoAPIkey");
+        const response = await axiosInstance.get("/GeoAPIkey");
         GeoAPIKEY = response.data.key;
         const data = await axios.get(
           `https://geo.ipify.org/api/v2/country,city?apiKey=${GeoAPIKEY}&ipAddress=${queryIP.value}`
