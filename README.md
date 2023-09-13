@@ -2,7 +2,7 @@
 A map that displays any searched IP address - made using Vue, Node, Express, IPIFY's geolocation API, and Mapbox's API (with Leaflet.js).
 
 ## View This Project
-This project has been deployed [to Render here](https://ip-tracker-map.onrender.com/).
+This project has been deployed on my personal domain https://ip.brendanmerritt.com/.
 
 ## Mobile / Desktop Layouts
 The website is designed to transition seamlessly into all mobile, tablet, laptop, and desktop screens. Below are images to display how the website performs on some of the most common screen resolutions to date.
